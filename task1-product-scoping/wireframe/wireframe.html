@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarketLens — Wireframe</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; padding: 32px 16px; color: #1a1a1a; }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 15px; font-weight: 500; color: #888; margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .screen-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+  .screen { background: #fff; border: 0.5px solid #e0e0e0; border-radius: 12px; padding: 16px; margin-bottom: 24px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 0.5px solid #e0e0e0; }
+  .logo { font-size: 13px; font-weight: 500; color: #1a1a1a; display: flex; align-items: center; gap: 6px; }
+  .step-pills { display: flex; gap: 6px; }
+  .pill { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid #e0e0e0; color: #888; }
+  .pill.active { background: #E6F1FB; color: #185FA5; border-color: #85B7EB; }
+  .pill.done { background: #EAF3DE; color: #3B6D11; border-color: #97C459; }
+  .section-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; }
+  .muted { font-size: 12px; color: #888; }
+  .upload-zone { border: 1px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center; background: #fafafa; margin-bottom: 12px; }
+  .upload-icon { font-size: 24px; color: #bbb; margin-bottom: 6px; }
+  .file-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 20px; background: #f5f5f5; border: 0.5px solid #e0e0e0; color: #888; margin: 3px; }
+  .source-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; border: 0.5px solid #e0e0e0; margin-bottom: 6px; background: #fafafa; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; }
+  .badge-blue { background: #E6F1FB; color: #185FA5; }
+  .badge-green { background: #EAF3DE; color: #3B6D11; }
+  .badge-amber { background: #FAEEDA; color: #854F0B; }
+  .rule-row { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; background: #fafafa; border: 0.5px solid #e0e0e0; margin-bottom: 5px; font-size: 12px; color: #888; }
+  .check { color: #3B6D11; font-size: 14px; }
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .metric-card { background: #fafafa; border-radius: 8px; padding: 10px 12px; }
+  .metric-val { font-size: 20px; font-weight: 500; color: #1a1a1a; }
+  .metric-label { font-size: 11px; color: #888; margin-top: 2px; }
+  .metric-val.danger { color: #A32D2D; }
+  .metric-val.success { color: #3B6D11; }
+  .preview-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .preview-table th { background: #fafafa; color: #888; font-weight: 500; padding: 5px 8px; text-align: left; border-bottom: 0.5px solid #e0e0e0; }
+  .preview-table td { padding: 5px 8px; border-bottom: 0.5px solid #e0e0e0; color: #1a1a1a; }
+  .preview-table tr:last-child td { border-bottom: none; }
+  .td-new { background: #EAF3DE; color: #3B6D11; }
+  .log-row { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 0.5px solid #e0e0e0; font-size: 11px; }
+  .log-row:last-child { border-bottom: none; }
+  .log-time { color: #bbb; min-width: 44px; }
+  .log-msg { color: #888; }
+  .log-msg span { color: #1a1a1a; }
+  .output-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
+  .output-card { background: #fafafa; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; }
+  .output-icon { font-size: 20px; color: #888; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; cursor: pointer; background: transparent; color: #1a1a1a; }
+  .btn-primary { background: #185FA5; color: #E6F1FB; border-color: #185FA5; }
+  .divider { height: 0.5px; background: #e0e0e0; margin: 12px 0; }
+  .arrow-flow { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .flow-step { font-size: 11px; padding: 4px 12px; border-radius: 20px; background: #f5f5f5; border: 0.5px solid #e0e0e0; color: #888; }
+  .flow-step.active-flow { background: #E6F1FB; color: #185FA5; border-color: #85B7EB; }
+  .flow-arrow { font-size: 12px; color: #bbb; }
+  .warn-banner { display: flex; align-items: center; gap: 8px; background: #FAEEDA; border: 0.5px solid #EF9F27; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #854F0B; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>MarketLens — UI Wireframe</h1>
+
+<div class="arrow-flow">
+  <span class="flow-step active-flow">1 · upload</span>
+  <span class="flow-arrow"><i class="ti ti-arrow-right"></i></span>
+  <span class="flow-step">2 · transform</span>
+  <span class="flow-arrow"><i class="ti ti-arrow-right"></i></span>
+  <span class="flow-step">3 · validate</span>
+  <span class="flow-arrow"><i class="ti ti-arrow-right"></i></span>
+  <span class="flow-step">4 · output</span>
+</div>
+
+<!-- SCREEN 1 -->
+<p class="screen-label">Screen 1 — Upload</p>
+<div class="screen">
+  <div class="topbar">
+    <div class="logo"><i class="ti ti-chart-bar"></i> MarketLens</div>
+    <div class="step-pills">
+      <span class="pill active">Upload</span>
+      <span class="pill">Transform</span>
+      <span class="pill">Validate</span>
+      <span class="pill">Output</span>
+    </div>
+  </div>
+  <p class="section-title">Upload your exports</p>
+  <p class="muted" style="margin-bottom:10px;">Supported sources: Google Ads, Meta Ads Manager, HubSpot, Mailchimp</p>
+  <div class="upload-zone">
+    <div class="upload-icon"><i class="ti ti-upload"></i></div>
+    <p class="muted">Drop CSV or Excel files here, or <span style="color:#185FA5;">browse</span></p>
+  </div>
+  <div style="margin-bottom:10px;">
+    <span class="file-chip"><i class="ti ti-file"></i> google_ads_aug2025.csv</span>
+    <span class="file-chip"><i class="ti ti-file"></i> meta_export_aug2025.xlsx</span>
+    <span class="file-chip"><i class="ti ti-file"></i> hubspot_leads_aug2025.csv</span>
+  </div>
+  <div class="divider"></div>
+  <p class="section-title">Detected sources</p>
+  <div class="source-row"><span style="font-size:12px;">google_ads_aug2025.csv</span><span class="badge badge-green">Google Ads</span></div>
+  <div class="source-row"><span style="font-size:12px;">meta_export_aug2025.xlsx</span><span class="badge badge-blue">Meta Ads</span></div>
+  <div class="source-row"><span style="font-size:12px;">hubspot_leads_aug2025.csv</span><span class="badge badge-amber">HubSpot</span></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+    <button class="btn btn-primary">Continue <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- SCREEN 2 -->
+<p class="screen-label">Screen 2 — Transform</p>
+<div class="screen">
+  <div class="topbar">
+    <div class="logo"><i class="ti ti-chart-bar"></i> MarketLens</div>
+    <div class="step-pills">
+      <span class="pill done">Upload</span>
+      <span class="pill active">Transform</span>
+      <span class="pill">Validate</span>
+      <span class="pill">Output</span>
+    </div>
+  </div>
+  <p class="section-title">Transformation rules applied</p>
+  <p class="muted" style="margin-bottom:10px;">Rules are pre-defined per source. You cannot modify them here.</p>
+  <div class="rule-row"><i class="ti ti-check check"></i> Normalise date columns to ISO 8601 (YYYY-MM-DD)</div>
+  <div class="rule-row"><i class="ti ti-check check"></i> Rename platform-specific columns to unified schema</div>
+  <div class="rule-row"><i class="ti ti-check check"></i> Remove duplicate rows based on campaign ID + date</div>
+  <div class="rule-row"><i class="ti ti-check check"></i> Fill missing spend values with 0</div>
+  <div class="rule-row"><i class="ti ti-check check"></i> Derive: CTR = clicks / impressions · 100</div>
+  <div class="rule-row"><i class="ti ti-check check"></i> Derive: CPA = spend / conversions</div>
+  <div class="divider"></div>
+  <p class="section-title" style="margin-bottom:6px;">Unified output schema</p>
+  <div style="overflow-x:auto;">
+    <table class="preview-table">
+      <thead><tr><th>date</th><th>source</th><th>campaign_name</th><th>impressions</th><th>clicks</th><th>spend</th><th class="td-new">ctr_%</th><th class="td-new">cpa</th></tr></thead>
+      <tbody>
+        <tr><td>2025-08-01</td><td>Google Ads</td><td>Brand Search</td><td>48,200</td><td>1,820</td><td>₹4,200</td><td class="td-new">3.77</td><td class="td-new">₹84</td></tr>
+        <tr><td>2025-08-01</td><td>Meta</td><td>Retargeting Q3</td><td>91,400</td><td>2,140</td><td>₹6,800</td><td class="td-new">2.34</td><td class="td-new">₹113</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:6px;">Columns highlighted in green are derived fields added by the tool.</p>
+  <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+    <button class="btn btn-primary">Validate <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- SCREEN 3 -->
+<p class="screen-label">Screen 3 — Validate</p>
+<div class="screen">
+  <div class="topbar">
+    <div class="logo"><i class="ti ti-chart-bar"></i> MarketLens</div>
+    <div class="step-pills">
+      <span class="pill done">Upload</span>
+      <span class="pill done">Transform</span>
+      <span class="pill active">Validate</span>
+      <span class="pill">Output</span>
+    </div>
+  </div>
+  <p class="section-title">Data quality summary</p>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-val">4,820</div><div class="metric-label">Input rows</div></div>
+    <div class="metric-card"><div class="metric-val success">4,791</div><div class="metric-label">Output rows</div></div>
+    <div class="metric-card"><div class="metric-val">29</div><div class="metric-label">Duplicates removed</div></div>
+    <div class="metric-card"><div class="metric-val danger">12</div><div class="metric-label">Failed records</div></div>
+  </div>
+  <div class="warn-banner"><i class="ti ti-alert-triangle"></i> 12 records had missing conversion values and were excluded. <span style="text-decoration:underline;cursor:pointer;margin-left:4px;">Review</span></div>
+  <div class="divider"></div>
+  <p class="section-title" style="margin-bottom:6px;">Transformation log</p>
+  <div class="log-row"><span class="log-time">09:14:02</span><span class="log-msg">Ingested <span>3 files</span> — 4,820 rows total</span></div>
+  <div class="log-row"><span class="log-time">09:14:03</span><span class="log-msg">Renamed <span>18 columns</span> to unified schema</span></div>
+  <div class="log-row"><span class="log-time">09:14:03</span><span class="log-msg">Removed <span>29 duplicate rows</span> on campaign_id + date</span></div>
+  <div class="log-row"><span class="log-time">09:14:03</span><span class="log-msg">Derived <span>ctr_%</span> and <span>cpa</span> for all rows</span></div>
+  <div class="log-row"><span class="log-time">09:14:04</span><span class="log-msg" style="color:#854F0B;"><i class="ti ti-alert-triangle"></i> 12 records excluded — <span>conversions = null</span></span></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+    <button class="btn btn-primary">Export output <i class="ti ti-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- SCREEN 4 -->
+<p class="screen-label">Screen 4 — Output</p>
+<div class="screen">
+  <div class="topbar">
+    <div class="logo"><i class="ti ti-chart-bar"></i> MarketLens</div>
+    <div class="step-pills">
+      <span class="pill done">Upload</span>
+      <span class="pill done">Transform</span>
+      <span class="pill done">Validate</span>
+      <span class="pill active">Output</span>
+    </div>
+  </div>
+  <p class="section-title">Your data is ready</p>
+  <p class="muted" style="margin-bottom:12px;">4,791 rows · 3 sources · 2 derived fields · processed in 2.1s</p>
+  <div class="output-grid">
+    <div class="output-card"><i class="ti ti-file output-icon"></i><div><p style="font-size:13px;font-weight:500;color:#1a1a1a;margin:0;">Download CSV</p><p class="muted">Clean, unified export</p></div></div>
+    <div class="output-card"><i class="ti ti-table output-icon"></i><div><p style="font-size:13px;font-weight:500;color:#1a1a1a;margin:0;">Copy to clipboard</p><p class="muted">Paste into Sheets or BI tool</p></div></div>
+  </div>
+  <div class="divider"></div>
+  <p class="section-title" style="margin-bottom:6px;">Run summary</p>
+  <div class="log-row"><span class="log-time">Run ID</span><span class="log-msg"><span>mpl-20250826-0914</span></span></div>
+  <div class="log-row"><span class="log-time">Sources</span><span class="log-msg"><span>Google Ads, Meta, HubSpot</span></span></div>
+  <div class="log-row"><span class="log-time">Same input?</span><span class="log-msg"><span>Re-run will produce identical output</span> — reproducible</span></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:12px;gap:8px;">
+    <button class="btn">Start new run</button>
+    <button class="btn btn-primary"><i class="ti ti-download"></i> Download CSV</button>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
