@@ -52,3 +52,17 @@ a faster path to wrong answers.
   or a BI tool instead of a CSV download, removing the last manual step
 - **Client-facing layer** — running a proper discovery session with clients before 
   designing their version, rather than assuming their needs mirror the analyst's
+
+---
+
+## Wireframe
+
+Designed as a 4-screen flow: Upload → Transform → Validate → Output.
+
+Screenshots are in the `wireframe/` folder:
+- `wireframe-1-upload.png` — Upload screen
+- `wireframe-2-upload.png` — Transform screen
+- `wireframe-3-upload.png` — Validate screen
+- `wireframe-4-upload.png` — Output screen
+
+The interactive HTML version is also available at `wireframe/wireframe.html`.
