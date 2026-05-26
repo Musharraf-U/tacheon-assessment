@@ -1,6 +1,6 @@
 # Tacheon Assessment — Musharraf Usman
 
-Assessment submission for the Data & AI Product Engineer role at Tacheon/Smacient.
+Assessment submission for the Data & AI Product Engineer role at Tacheon.
 
 ---
 
