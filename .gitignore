@@ -1,1 +1,6 @@
-task2-pipeline/credentials.json 
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+credentials.json
+.env
