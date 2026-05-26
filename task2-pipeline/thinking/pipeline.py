@@ -4,25 +4,23 @@ from datetime import datetime, timezone
 from google.cloud import bigquery
 from config import (
     PROJECT_ID, DATASET_ID, TABLE_ID, LOCATION,
-    NEWS_API_KEY, NEWS_API_URL, NEWS_QUERY,
-    NEWS_LANGUAGE, NEWS_PAGE_SIZE
+    NEWS_API_KEY, NEWS_API_URL, NEWS_LANGUAGE, NEWS_PAGE_SIZE, NEWS_COUNTRY
 )
-
 
 def fetch_news() -> list:
     params = {
-        "q": NEWS_QUERY,
-        "language": NEWS_LANGUAGE,
+        "country": "us",
+        "category": "technology",
         "pageSize": NEWS_PAGE_SIZE,
         "apiKey": NEWS_API_KEY
     }
     response = requests.get(NEWS_API_URL, params=params, timeout=10)
     response.raise_for_status()
     data = response.json()
+    print(f"API status: {data.get('status')}, total results: {data.get('totalResults')}")
     if data.get("status") != "ok":
         raise ValueError(f"NewsAPI error: {data.get('message')}")
     return data.get("articles", [])
-
 
 def transform(articles: list) -> pd.DataFrame:
     records = []
